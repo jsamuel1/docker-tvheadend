@@ -11,7 +11,7 @@ RUN apt-get install -m -y wget git curl make dkms dpkg-dev \
     debconf-utils software-properties-common \
     build-essential hdhomerun-config libhdhomerun-dev debhelper libswscale-dev \
     libavahi-client-dev libavformat-dev libavcodec-dev liburiparser-dev \
-    libssl-dev libiconv-hook1 libiconv-hook-dev
+    libssl-dev libiconv-hook1 libiconv-hook-dev python bzip2 zlib1g-dev libavutil-dev libavresample-dev
 
 # checkout, build, and install tvheadend
 RUN git clone https://github.com/tvheadend/tvheadend.git /srv/tvheadend \
