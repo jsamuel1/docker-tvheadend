@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Justin Garrison <justinleegarrison@gmail.com>
+MAINTAINER Joshua Samuel <jsamuel@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV HTS_COMMIT master
 
