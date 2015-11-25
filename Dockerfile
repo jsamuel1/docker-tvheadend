@@ -11,11 +11,11 @@ RUN apt-get install -m -y wget git curl make dkms dpkg-dev \
     debconf-utils software-properties-common \
     build-essential hdhomerun-config libhdhomerun-dev debhelper libswscale-dev \
     libavahi-client-dev libavformat-dev libavcodec-dev liburiparser-dev \
-    libssl-dev libiconv-hook1 libiconv-hook-dev python bzip2 zlib1g-dev libavutil-dev libavresample-dev
+    libssl-dev libiconv-hook1 libiconv-hook-dev python bzip2 zlib1g-dev libavutil-dev libavresample-dev 
 
 # checkout, build, and install tvheadend
 RUN git clone https://github.com/tvheadend/tvheadend.git /srv/tvheadend \
-  && cd /srv/tvheadend && git checkout ${HTS_COMMIT} && ./configure --libffmpeg_static && make && make install
+  && cd /srv/tvheadend && git checkout ${HTS_COMMIT} && ./configure --enable-libffmpeg_static && make && make install
 
 # Clean up APT and temporary files
 RUN rm -r /srv/tvheadend && apt-get purge -qq build-essential pkg-config git
