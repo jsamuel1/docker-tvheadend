@@ -54,6 +54,6 @@ RUN groupmod -o -g 9981 hts \
  && install -o hts -g hts -d /config /recordings
  
 # add a user to run as non root
-RUN adduser --disabled-password --gecos '' hts
+#RUN adduser --disabled-password --gecos '' hts
 
 CMD ["/usr/local/bin/tvheadend","-C","-u","hts","-g","hts","-c","/config"]
