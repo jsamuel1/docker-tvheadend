@@ -43,17 +43,18 @@ RUN mkdir -p /config/.var/lib/locales/ /config/.usr/lib/ \
  && ln -s /config/.var/lib/locales/supported.d /var/lib/locales/ \
  && ln -s /config/.usr/lib/locale /usr/lib/
 
-
-EXPOSE 9981 9982
-
-VOLUME /config /recordings
+# add a user to run as non root
+RUN adduser --disabled-password --gecos '' hts
 
 # Configure the hts user account and it's folders
 RUN groupmod -o -g 9981 hts \
- && usermod -o -u 9981 -a -G hts -d /config hts \
+ && usermod -o -u 9981 -a -G video -d /config hts \
  && install -o hts -g hts -d /config /recordings
  
-# add a user to run as non root
-#RUN adduser --disabled-password --gecos '' hts
+# Launch script
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-CMD ["/usr/local/bin/tvheadend","-C","-u","hts","-g","hts","-c","/config"]
+VOLUME /config /recordings
+EXPOSE 9981 9982
+ENTRYPOINT ["/init","/entrypoint.sh","-u","hts","-g","hts","-c","/config"]
