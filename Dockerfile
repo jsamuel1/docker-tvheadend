@@ -57,4 +57,4 @@ RUN chmod +x /entrypoint.sh
 
 VOLUME /config /recordings
 EXPOSE 9981 9982
-ENTRYPOINT ["/init","/entrypoint.sh","-u","hts","-g","hts","-c","/config"]
+ENTRYPOINT ["/init","/entrypoint.sh","-C","-u","hts","-g","hts","-c","/config"]
